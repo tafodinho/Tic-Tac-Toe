@@ -1,4 +1,4 @@
-def class Board
+class Board
     def initialize()
         @board = Array.new(3){Array.new(3)}
     end
@@ -7,22 +7,45 @@ def class Board
 
    end
    def show_board()
+        print "*---*---*---*\n"
+        @board[1][2] = "X"
         @board.each_with_index do |row, index_outer|
+            print "|"
             row.each_with_index do |value, index_inner|
-                if value
-
+                if value.nil?
+                    print " "
+                    print (index_inner + index_outer * 3) + 1
+                    print " "
+                else
+                    print " "
+                    print value
+                    print " "
+                end
+            end
+            print "|"
+            print "\n"
+        end
+        print "*---*---*---*"
 
    end
-   def board_full()
 
-   end
-   def diagonal_win()
+    def board_full()
+        
+    end
+
+    def diagonal_win()
 
     end
+
     def horizontal_win()
-    
+
     end
+
     def veritcal_win()
     
     end
 end
+
+board = Board.new 
+
+board.show_board
