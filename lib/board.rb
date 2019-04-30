@@ -29,8 +29,10 @@ class Board
 
    end
 
-    def board_full()
-        
+    def is_board_full()
+        @board.all do |row|
+            row.all? {|n| n != nil} #if all is not nil then board is full 
+        end   
     end
 
     def diagonal_win()
