@@ -1,7 +1,7 @@
 class Board
     def initialize()
         @board = Array.new(3){Array.new(3)}
-        @board = [[1,1,2], [1,2,1], [2,1,1]]
+        @board = [[1,8,1], [1,2,1], [2,1,1]]
     end
    # cordinate = { "1" => [0,0], "2" => [0,1], "3" =>[0,2], "4" => [1,0], "5" => [1,1], "6" =>[1,2],"7" => [2,0], "8" => [2,1], "9" =>[2,2] }
     def add_piece(position, piece)
@@ -53,8 +53,10 @@ class Board
         leading_diagonal || lagging_diagonal
     end
 
-    def horizontal_win()
-
+    def horizontal_win(piece)
+        @board.any? do |row|
+            row.all? {|value| piece == value}
+        end
     end
 
     def veritcal_win()
@@ -68,3 +70,4 @@ board.show_board
 # board.add_piece([0,0], "x")
 # board.show_board
 puts board.diagonal_win(2)
+puts board.horizontal_win(1)
