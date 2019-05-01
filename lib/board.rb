@@ -1,7 +1,7 @@
 class Board
     def initialize()
         @board = Array.new(3){Array.new(3)}
-        @board = [[1,8,1], [1,2,1], [2,1,1]]
+        @board = [[3,8,1], [3,2,1], [4,1,1]]
     end
    # cordinate = { "1" => [0,0], "2" => [0,1], "3" =>[0,2], "4" => [1,0], "5" => [1,1], "6" =>[1,2],"7" => [2,0], "8" => [2,1], "9" =>[2,2] }
     def add_piece(position, piece)
@@ -59,8 +59,22 @@ class Board
         end
     end
 
-    def veritcal_win()
-    
+    def veritcal_win(piece)
+        col1 = []
+        col2 = []
+        col3 = []
+        @board.each do |row|
+            row.each_with_index do |value, index2|
+                if index2 == 0
+                    col1 << value
+                elsif index2 == 1
+                    col2 << value
+                else
+                    col3 << value
+                end
+            end
+        end
+        col1.all? {|value| piece == value} || col2.all? {|value| piece == value} || col3.all? {|value| piece == value}
     end
 end
 
@@ -69,5 +83,6 @@ board.show_board
 # puts board.board_full?
 # board.add_piece([0,0], "x")
 # board.show_board
-puts board.diagonal_win(2)
-puts board.horizontal_win(1)
+# puts board.diagonal_win(2)
+# puts board.horizontal_win(1)
+puts board.veritcal_win(3)
