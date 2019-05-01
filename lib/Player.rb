@@ -15,6 +15,7 @@ class Player
     end
 
     private
+    
         def map_cordinates(number)
             map = {
                 "1" => [0,0],
