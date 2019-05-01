@@ -1,7 +1,7 @@
 class Board
-    def initialize()
+    def initialize
         @board = Array.new(3){Array.new(3)}
-        @board = [[3,8,1], [3,2,1], [4,1,1]]
+        #@board = [[3,8,1], [3,2,1], [1,1,1]]
     end
    # cordinate = { "1" => [0,0], "2" => [0,1], "3" =>[0,2], "4" => [1,0], "5" => [1,1], "6" =>[1,2],"7" => [2,0], "8" => [2,1], "9" =>[2,2] }
     def add_piece(position, piece)
@@ -19,9 +19,10 @@ class Board
     end
 
    def show_board()
+        system "clear" or system "cls"
         print "*---*---*---*\n"
         @board.each_with_index do |row, index_outer|
-            print "|"
+            print "| "
             row.each_with_index do |value, index_inner|
                 if value.nil?
                     print " "
@@ -32,34 +33,40 @@ class Board
                     print value
                     print " "
                 end
+                
             end
-            print "|"
+            print " | "
             print "\n"
         end
         print "*---*---*---*"
+        print "\n"
 
    end
 
-    def board_full?()
+    def winner?(piece)
+        diagonal_win?(piece) || horizontal_win?(piece) || veritcal_win?(piece)
+    end
+
+    def board_full?
         @board.all? do |row|
             row.none? {|value| value == nil }
         end
     end
 
-    def diagonal_win(piece)
+    def diagonal_win?(piece)
         leading_diagonal = (0..2).collect {|index| @board[index][index]}.all? {|value| piece == value}
         lagging_diagonal = (0..2).collect {|index| @board[index][-index-1]}.all? {|value| piece == value}
 
         leading_diagonal || lagging_diagonal
     end
 
-    def horizontal_win(piece)
+    def horizontal_win?(piece)
         @board.any? do |row|
             row.all? {|value| piece == value}
         end
     end
 
-    def veritcal_win(piece)
+    def veritcal_win?(piece)
         col1 = []
         col2 = []
         col3 = []
@@ -78,11 +85,11 @@ class Board
     end
 end
 
-board = Board.new 
-board.show_board
+# board = Board.new 
+# board.show_board
 # puts board.board_full?
 # board.add_piece([0,0], "x")
 # board.show_board
 # puts board.diagonal_win(2)
-# puts board.horizontal_win(1)
-puts board.veritcal_win(3)
+# # puts board.horizontal_win(1)
+# puts board.veritcal_win(1)

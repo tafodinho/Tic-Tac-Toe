@@ -1,11 +1,12 @@
 class Player
+    attr_accessor :name, :piece
     def initialize(name, piece, board)
         @name = name 
         @piece = piece
         @board = board
     end
 
-    def ask_move()
+    def ask_move
         loop do
             puts "Enter move to make "
             move = gets.chomp
