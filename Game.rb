@@ -1,30 +1,24 @@
-require_relative "Player"
-require_relative "Board"
+require_relative "lib/Player"
+require_relative "lib/Board"
 
 class Game
-    def initialize
-        @board =  Board.new
-
-        @player_1 = Player.new("Player 1", "X", @board)
-        @player_2 = Player.new("Player 2", "O", @board)
-
+    def initialize(board, player1, player2)
+        @board =  board
+        @player_1 = player1
+        @player_2 = player2
         @current_player = @player_1
     end
 
     def play
         loop do 
             @board.show_board
-
             @current_player.ask_move 
-
             break if is_game_over?
-
-            @current_player == @player_1 ? @current_player = @player_2 : @current_player = @player_1
+            @current_player = @current_player == @player_1 ? @player_2 : @player_1
         end
     end
 
     def is_game_over?
-
         is_victory? || is_draw?
     end
 
@@ -50,5 +44,8 @@ class Game
         end
 end
 
-game = Game.new 
+board =  Board.new
+player_1 = Player.new("Player 1", "X", board)
+player_2 = Player.new("Player 2", "O", board)
+game = Game.new(baoard, player1, player2)
 game.play

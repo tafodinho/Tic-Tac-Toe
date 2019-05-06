@@ -1,9 +1,8 @@
 class Board
     def initialize
         @board = Array.new(3){Array.new(3)}
-        #@board = [[3,8,1], [3,2,1], [1,1,1]]
-    end
-   # cordinate = { "1" => [0,0], "2" => [0,1], "3" =>[0,2], "4" => [1,0], "5" => [1,1], "6" =>[1,2],"7" => [2,0], "8" => [2,1], "9" =>[2,2] }
+    end 
+
     def add_piece(position, piece)
         if is_position_available(position)
             @board[position[0]][position[1]] = piece
@@ -17,31 +16,6 @@ class Board
     def is_position_available(pos) 
         @board[pos[0]][pos[1]].nil?
     end
-
-   def show_board()
-        system "clear" or system "cls"
-        print "*---*---*---*\n"
-        @board.each_with_index do |row, index_outer|
-            print "| "
-            row.each_with_index do |value, index_inner|
-                if value.nil?
-                    print " "
-                    print (index_inner + index_outer * 3) + 1
-                    print " "
-                else
-                    print " "
-                    print value
-                    print " "
-                end
-                
-            end
-            print " | "
-            print "\n"
-        end
-        print "*---*---*---*"
-        print "\n"
-
-   end
 
     def winner?(piece)
         diagonal_win?(piece) || horizontal_win?(piece) || veritcal_win?(piece)
@@ -84,12 +58,3 @@ class Board
         col1.all? {|value| piece == value} || col2.all? {|value| piece == value} || col3.all? {|value| piece == value}
     end
 end
-
-# board = Board.new 
-# board.show_board
-# puts board.board_full?
-# board.add_piece([0,0], "x")
-# board.show_board
-# puts board.diagonal_win(2)
-# # puts board.horizontal_win(1)
-# puts board.veritcal_win(1)
