@@ -1,5 +1,6 @@
 require_relative "lib/Player"
 require_relative "lib/Board"
+require_relative "lib/UI"
 
 class Game
     def initialize(board, player1, player2)
@@ -7,6 +8,7 @@ class Game
         @player_1 = player1
         @player_2 = player2
         @current_player = @player_1
+        @ui = new UI
     end
 
     def play
@@ -26,7 +28,7 @@ class Game
         def is_victory?
             if @board.winner? @current_player.piece
                 @board.show_board
-                puts @current_player.name + " Has Wins!!!"
+                @ui.print_winner(@current_player)
                 true
             else
                 false
@@ -47,5 +49,5 @@ end
 board =  Board.new
 player_1 = Player.new("Player 1", "X", board)
 player_2 = Player.new("Player 2", "O", board)
-game = Game.new(baoard, player1, player2)
+game = Game.new(board, player_1, player_2)
 game.play
