@@ -1,13 +1,13 @@
 class UserInterface 
 
-    def initialize 
-
+    def initialize(board)
+        @board = board
     end
 
-    def show_board(board)
+    def show_board
         system "clear" or system "cls"
         print "*---*---*---*\n"
-        board.each_with_index do |row, index_outer|
+        @board.board.each_with_index do |row, index_outer|
             print "| "
             row.each_with_index do |value, index_inner|
                 if value.nil?
@@ -19,7 +19,6 @@ class UserInterface
                     print value
                     print " "
                 end
-                
             end
             print " | "
             print "\n"
