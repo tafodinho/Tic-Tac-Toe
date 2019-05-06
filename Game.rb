@@ -28,7 +28,7 @@ class Game
         def is_victory?
             if @board.winner? @current_player.piece
                 @ui.show_board
-                puts @current_player.name + " Has Wins!!!"
+                @ui.print_winner(@current_player)
                 true
             else
                 false
@@ -38,7 +38,7 @@ class Game
         def is_draw?
             if @board.board_full?
                 @ui.show_board
-                puts "Draw Game!!!"
+                @ui.print_draw
                 true
             else
                 false

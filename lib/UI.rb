@@ -26,7 +26,12 @@ class UserInterface
         print "*---*---*---*"
         print "\n"
    end
+
    def print_winner(player)
     puts player.name + " Has Wins!!!"
+   end
+   
+   def print_draw
+    puts "Draw Game!!!"
    end
 end
