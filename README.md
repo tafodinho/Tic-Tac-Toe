@@ -10,8 +10,8 @@ A Tic-Tac-Toe two player console game
 - After executing the command above the game will request for a position for the face player to place piece 
 - After the first player places a piece the position will be marked by and "X" and request for the second player to enter position to place Piece
 - That position will also be marked with an "O" and request the first player to make a move and so on and so forth
-- The game ends when there a player has marked a strait line(either verticaly, horizontally or Diagonaly) with either and "X" or an "O" 
-- The game will also end when there users have a draw game in which case there is no strait line marked by either players and the board has no free space to place a piece
+- The game ends when a player has marked a straight line(either verticaly, horizontally or Diagonaly) with either and "X" or an "O" 
+- The game will also end when  users have a draw game in which case there is no straight line marked by either players and the board has no free space to place a piece
 
 ## Project Stucture 
     This project is modeled into four classes
