@@ -1,13 +1,9 @@
-class UserInterface 
+module UserInterface 
 
-    def initialize(board)
-        @board = board
-    end
-
-    def show_board
+    def show_board(board)
         system "clear" or system "cls"
         print "*---*---*---*\n"
-        @board.board.each_with_index do |row, index_outer|
+        board.board.each_with_index do |row, index_outer|
             print "| "
             row.each_with_index do |value, index_inner|
                 if value.nil?
@@ -32,6 +28,12 @@ class UserInterface
    end
    
    def print_draw
-    puts "Draw Game!!!"
+     puts "Draw Game!!!"
    end
+   def print_taken
+     puts "Posision is not available try another.."
+   end
+   def print_make_move
+     puts "Enter move to make "
+    end
 end

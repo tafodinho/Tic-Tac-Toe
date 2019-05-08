@@ -1,8 +1,7 @@
 
-
 class Game
-    def initialize(board, player1, player2, ui)
-        @ui = ui
+    include UserInterface
+    def initialize(board, player1, player2)
         @board =  board
         @player_1 = player1
         @player_2 = player2
@@ -11,7 +10,7 @@ class Game
 
     def play
         loop do 
-            @ui.show_board
+            UserInterface.show_board(@board)
             @current_player.ask_move 
             break if is_game_over?
             @current_player = @current_player == @player_1 ? @player_2 : @player_1
@@ -25,8 +24,8 @@ class Game
     private
         def is_victory?
             if winner? @current_player.piece
-                @ui.show_board
-                @ui.print_winner(@current_player)
+                UserInterface.show_board(@board)
+                UserInterface.print_winner(@current_player)
                 true
             else
                 false
@@ -35,8 +34,8 @@ class Game
 
         def is_draw?
             if @board.board_full?
-                @ui.show_board
-                @ui.print_draw
+                UserInterface.show_board(@board)
+                UserInterface.print_draw
                 true
             else
                 false

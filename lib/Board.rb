@@ -1,6 +1,6 @@
 class Board
     attr_accessor :board 
-    
+    include UserInterface
     def initialize()
         @board = Array.new(3){Array.new(3)}
     end 
@@ -10,7 +10,7 @@ class Board
             @board[position[0]][position[1]] = piece
             true
         else 
-            puts "Posision is not available try another.."
+            UserInterface.print_taken
             false
         end
     end
@@ -18,7 +18,6 @@ class Board
     def is_position_available(pos) 
         @board[pos[0]][pos[1]].nil?
     end
-
 
     def board_full?
         @board.all? do |row|

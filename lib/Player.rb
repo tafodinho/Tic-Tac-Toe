@@ -1,5 +1,8 @@
 class Player
     attr_accessor :name, :piece
+
+    include UserInterface
+    
     def initialize(name, piece, board)
         @name = name 
         @piece = piece
@@ -8,7 +11,7 @@ class Player
 
     def ask_move
         loop do
-            puts "Enter move to make "
+            UserInterface.print_make_move
             move = gets.chomp
             cordinate = map_cordinates(move)
             break if @board.add_piece(cordinate, @piece)
