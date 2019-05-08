@@ -28,7 +28,7 @@ class UserInterface
    end
 
    def print_winner(player)
-    puts player.name + " Has Wins!!!"
+    puts player.name + " Has Won!!!"
    end
    
    def print_draw
