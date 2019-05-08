@@ -1,7 +1,8 @@
-class Player
-    attr_accessor :name, :piece
+require_relative "UI"
 
+class Player
     include UserInterface
+    attr_accessor :name, :piece
     
     def initialize(name, piece, board)
         @name = name 
@@ -11,7 +12,7 @@ class Player
 
     def ask_move
         loop do
-            UserInterface.print_make_move
+            self.print_make_move
             move = gets.chomp
             cordinate = map_cordinates(move)
             break if @board.add_piece(cordinate, @piece)
@@ -19,7 +20,6 @@ class Player
     end
 
     private
-    
         def map_cordinates(number)
             map = {
                 "1" => [0,0],

@@ -1,3 +1,4 @@
+
 class Board
     attr_accessor :board 
     include UserInterface
@@ -10,7 +11,7 @@ class Board
             @board[position[0]][position[1]] = piece
             true
         else 
-            UserInterface.print_taken
+            self.print_taken
             false
         end
     end

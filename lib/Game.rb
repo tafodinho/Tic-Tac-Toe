@@ -10,7 +10,7 @@ class Game
 
     def play
         loop do 
-            UserInterface.show_board(@board)
+            self.show_board(@board)
             @current_player.ask_move 
             break if is_game_over?
             @current_player = @current_player == @player_1 ? @player_2 : @player_1
@@ -24,8 +24,8 @@ class Game
     private
         def is_victory?
             if winner? @current_player.piece
-                UserInterface.show_board(@board)
-                UserInterface.print_winner(@current_player)
+                self.show_board(@board)
+                self.print_winner(@current_player)
                 true
             else
                 false
@@ -34,8 +34,8 @@ class Game
 
         def is_draw?
             if @board.board_full?
-                UserInterface.show_board(@board)
-                UserInterface.print_draw
+                self.show_board(@board)
+                self.print_draw
                 true
             else
                 false
