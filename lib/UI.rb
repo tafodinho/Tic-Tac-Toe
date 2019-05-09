@@ -4,20 +4,11 @@ module UserInterface
         system "clear" or system "cls"
         print "*---*---*---*\n"
         board.board.each_with_index do |row, index_outer|
-            print "| "
-            row.each_with_index do |value, index_inner|
-                if value.nil?
-                    print " "
-                    print (index_inner + index_outer * 3) + 1
-                    print " "
-                else
-                    print " "
-                    print value
-                    print " "
-                end
-            end
             print " | "
-            print "\n"
+            print row
+            if index_outer == 2 || index_outer == 5 || index_outer == 8
+                print "\n"
+            end
         end
         print "*---*---*---*"
         print "\n"
