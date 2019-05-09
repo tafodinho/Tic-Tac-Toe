@@ -15,7 +15,6 @@ class Player
         loop do
             self.print_make_move
             move = gets.chomp
-            cordinate = map_cordinates(move)
             break if @board.add_piece(cordinate, @piece)
         end
     end
