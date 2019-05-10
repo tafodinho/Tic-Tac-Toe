@@ -1,7 +1,7 @@
 module UserInterface 
 
     def show_board(board)
-        system "clear" or system "cls"
+        #system "clear" or system "cls"
         print "*---*---*---*\n"
         board.board.each_with_index do |row, index_outer|
             print " | "

@@ -2,7 +2,7 @@ require_relative "UI"
 
 class Player
     include UserInterface
-    
+    attr_accessor :moves
     def initialize(name, piece, board)
         @name = name 
         @piece = piece
@@ -11,11 +11,9 @@ class Player
     end
 
     def ask_move
-        loop do
-            self.print_make_move
-            move = gets.chomp
-            break if @board.add_piece(cordinate, @piece)
-        end
+        self.print_make_move
+        move = gets.chomp.to_i
+        @moves << move if @board.add_piece(move, @piece)
     end
 
 end

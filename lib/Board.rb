@@ -1,11 +1,11 @@
-require_relative "UI"
+ require_relative "UI"
 
 class Board
     attr_accessor :board 
 
     include UserInterface
     def initialize()
-        @board = [1,2,3,4,5,6,7,8,9]
+        @board = [0,1,2,3,4,5,6,7,8]
     end 
 
     def add_piece(position, piece)
@@ -19,24 +19,16 @@ class Board
     end
 
     def is_position_available(pos) 
-       if @board[pos] =='X' || @board[pos] =='O'
-         false
-       else
-        true
-       end
+        if @board[pos] =='X' || @board[pos] =='O'
+             false 
+        else
+             true
+        end
     end
 
     def board_full?
         @board.all? do |row|
-            row.none? {|value| value == nil }
+            row.is_a? String
         end
     end
-
-   
 end
-bo = Board.new
-puts bo.is_position_available(1) 
-
-puts bo.add_piece(1, 'X') 
-puts bo.is_position_available(1) 
-bo.show_board(bo)
