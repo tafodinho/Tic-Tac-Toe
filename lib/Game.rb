@@ -60,6 +60,6 @@ class Game
                     is_true = true
                 end
             end
-            is_true || false
+            is_true
         end
 end
