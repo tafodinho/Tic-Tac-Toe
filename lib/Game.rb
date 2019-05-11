@@ -36,17 +36,16 @@ class Game
             if winner? 
                 show_board(@board)
                 print_winner(@current_player)
-                true
-            else
-                false
+                return true
             end
+            false
         end
 
         def is_draw?
             if @board.board_full?
                 show_board(@board)
                 print_draw
-                true
+                return true
             end
             false 
         end
