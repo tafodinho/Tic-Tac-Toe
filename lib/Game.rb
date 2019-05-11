@@ -20,7 +20,7 @@ class Game
 
     def play
         loop do 
-            self.show_board(@board)
+            show_board(@board)
             ask_move(@board , @current_player)
             break if is_game_over?
             @current_player = @current_player == @player_1 ? @player_2 : @player_1
