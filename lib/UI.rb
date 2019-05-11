@@ -14,6 +14,12 @@ module UserInterface
         print "\n"
    end
 
+   def ask_move(board , player)
+      print_make_move
+      move = gets.chomp.to_i
+      player.moves << move if board.add_piece(move, player.piece)
+    end
+
    def print_winner(player)
     puts player.name + " Has Won!!!"
    end

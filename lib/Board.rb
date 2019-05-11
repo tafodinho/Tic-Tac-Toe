@@ -18,7 +18,7 @@ class Board
         end
     end
 
-    def is_position_available(pos) 
+    private def is_position_available(pos) 
         if @board[pos] =='X' || @board[pos] =='O'
              false 
         else
