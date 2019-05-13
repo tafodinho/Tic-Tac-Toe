@@ -22,20 +22,20 @@ class Game
         loop do 
             show_board(@board)
             ask_move(@board , @current_player)
-            break if is_game_over?
+            if is_game_over?
+                if is_victory? 
+                    show_info(1)
+                elsif(is_draw?)
+                    show_info(0)
+                end
+                break
+            end
             @current_player = @current_player == @player_1 ? @player_2 : @player_1
         end
     end
 
     def is_game_over?
-        if is_victory? == true
-            show_info(1)
-            return true
-        elsif(is_draw? == true)
-            show_info(0)
-            return true
-        end
-        return false
+      is_victory? || is_draw?
     end
 
     private def show_info(code)
