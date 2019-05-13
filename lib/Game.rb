@@ -28,26 +28,33 @@ class Game
     end
 
     def is_game_over?
-        is_victory? || is_draw?
+        if is_victory? == true
+            show_info(1)
+            return true
+        elsif(is_draw? == true)
+            show_info(0)
+            return true
+        end
+        return false
+    end
+
+    private def show_info(code)
+        show_board(@board)
+        if code == 1
+            print_winner(@current_player)
+        else
+            print_draw
+        end
     end
 
     private
         def is_victory?
-            if winner? 
-                show_board(@board)
-                print_winner(@current_player)
-                return true
-            end
-            false
+          winner? ? true : false
         end
 
+     
         def is_draw?
-            if @board.board_full?
-                show_board(@board)
-                print_draw
-                return true
-            end
-            false 
+          @board.board_full? ? true : false 
         end
 
         def winner?
