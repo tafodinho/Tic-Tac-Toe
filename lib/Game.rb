@@ -1,4 +1,4 @@
-
+require_relative "UI"
 class Game
     include UserInterface
     def initialize(board, player1, player2)
