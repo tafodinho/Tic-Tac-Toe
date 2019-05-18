@@ -28,10 +28,12 @@ class Game
                 end
                 break
             else
-                show_board(@board)
-                ask_move(@board , @current_player)
+            show_board(@board)
+               if ask_move(@board , @current_player)
+                @current_player = @current_player == @player_1 ? @player_2 : @player_1
+               end
             end
-            @current_player = @current_player == @player_1 ? @player_2 : @player_1
+            
         end
     end
 
@@ -56,7 +58,6 @@ class Game
         end
 
         def show_info(code)
-            show_board(@board)
             if code == 1
                 print_winner(@current_player)
             else
