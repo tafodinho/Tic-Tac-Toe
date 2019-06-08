@@ -20,8 +20,6 @@ class Game
 
     def play
         loop do 
-            show_board(@board)
-            ask_move(@board , @current_player)
             if is_game_over?
                 if is_victory? 
                     show_info(1)
@@ -29,13 +27,29 @@ class Game
                     show_info(0)
                 end
                 break
+            else
+            show_board(@board)
+               if ask_move(@board , @current_player)
+                @current_player = @current_player == @player_1 ? @player_2 : @player_1
+               end
             end
-            @current_player = @current_player == @player_1 ? @player_2 : @player_1
+            
         end
     end
 
     def is_game_over?
       is_victory? || is_draw?
+    end
+
+    def winner?
+        is_true = false
+        WIN_COMBO.each do |arr| 
+            moves = arr & @current_player.moves
+            if arr == moves
+                is_true = true
+            end
+        end
+        is_true
     end
 
     private
@@ -44,7 +58,6 @@ class Game
         end
 
         def show_info(code)
-            show_board(@board)
             if code == 1
                 print_winner(@current_player)
             else
@@ -53,16 +66,5 @@ class Game
         end
         def is_draw?
           @board.board_full? ? true : false 
-        end
-
-        def winner?
-            is_true = false
-            WIN_COMBO.each do |arr| 
-                moves = arr & @current_player.moves
-                if arr == moves
-                    is_true = true
-                end
-            end
-            is_true
         end
 end
